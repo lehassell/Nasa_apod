@@ -1,5 +1,6 @@
 import requests
 import shutil
+import subprocess
 from datetime import date
 
 
@@ -52,4 +53,9 @@ if __name__ == '__main__':
         nasa_getter(date, nasa_data_file, nasa_img)
     else:
         print 'present'
+
+
+    # Set the image as background
+    place_string = 'tell application "Finder" to set desktop picture to POSIX file "'+ nasa_img +'"'
+    subprocess.call(['osascript', '-e', place_string])
 
